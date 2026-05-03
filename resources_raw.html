@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SSD Knowledge Base | Silicon Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#bbc9cf",
+                        "outline-variant": "#3c494e",
+                        "secondary-container": "#39485a",
+                        "on-primary-fixed-variant": "#004e60",
+                        "error": "#ffb4ab",
+                        "primary-container": "#00d1ff",
+                        "on-tertiary-container": "#a10016",
+                        "surface": "#0b1326",
+                        "secondary": "#b9c8de",
+                        "surface-container-low": "#131b2e",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#283044",
+                        "surface-container-lowest": "#060e20",
+                        "on-background": "#dae2fd",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-bright": "#31394d",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "on-secondary-container": "#a7b6cc",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "on-secondary": "#233143",
+                        "on-tertiary": "#68000a",
+                        "surface-container-high": "#222a3d",
+                        "on-primary": "#003543",
+                        "inverse-primary": "#00677f",
+                        "tertiary": "#ffd1cd",
+                        "on-surface": "#dae2fd",
+                        "primary-fixed-dim": "#4cd6ff",
+                        "on-tertiary-fixed": "#410004",
+                        "on-primary-container": "#00566a",
+                        "surface-container": "#171f33",
+                        "surface-variant": "#2d3449",
+                        "primary": "#a4e6ff",
+                        "tertiary-container": "#ffaaa4",
+                        "surface-tint": "#4cd6ff",
+                        "on-error": "#690005",
+                        "outline": "#859399",
+                        "primary-fixed": "#b7eaff",
+                        "secondary-fixed": "#d4e4fa",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "background": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary-fixed": "#001f28"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "mono": ["JetBrains Mono"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0b1326;
+            color: #dae2fd;
+        }
+        .glass-panel {
+            background: rgba(23, 31, 51, 0.6);
+            backdrop-filter: blur(24px);
+        }
+        .chapter-marker {
+            writing-mode: vertical-lr;
+            text-orientation: mixed;
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar from JSON -->
+<header class="bg-[#0b1326] dark:bg-[#0b1326] border-b border-[#39485a]/20 fixed top-0 w-full z-50 flex justify-between items-center px-6 py-3">
+<div class="text-xl font-bold tracking-tighter text-[#a4e6ff] font-headline uppercase">SILICON_PULSE_v1.0</div>
+<div class="hidden md:flex gap-8 font-space-grotesk tracking-widest uppercase text-sm items-center">
+<a class="text-[#39485a] hover:bg-[#a4e6ff]/10 hover:text-[#a4e6ff] transition-colors px-3 py-1" href="#">Dashboard</a>
+<a class="text-[#39485a] hover:bg-[#a4e6ff]/10 hover:text-[#a4e6ff] transition-colors px-3 py-1" href="#">Block Map</a>
+<a class="text-[#39485a] hover:bg-[#a4e6ff]/10 hover:text-[#a4e6ff] transition-colors px-3 py-1" href="#">Simulation</a>
+<a class="text-[#a4e6ff] border-b-2 border-[#a4e6ff] px-3 py-1" href="#">Resources</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden lg:flex items-center gap-2 bg-surface-container-high hover:bg-surface-variant text-primary text-xs font-mono px-4 py-1.5 border border-primary/20 rounded transition-all">
+<span class="material-symbols-outlined text-sm">picture_as_pdf</span>
+            DOWNLOAD_HANDOUT.PDF
+        </button>
+<span class="material-symbols-outlined text-[#a4e6ff] cursor-pointer hover:bg-[#a4e6ff]/10 p-2 rounded transition-all">settings</span>
+<span class="material-symbols-outlined text-[#a4e6ff] cursor-pointer hover:bg-[#a4e6ff]/10 p-2 rounded transition-all">help_outline</span>
+</div>
+</header>
+<!-- SideNavBar from JSON -->
+<nav class="hidden md:flex bg-[#0b1326] dark:bg-[#0b1326] flex-col h-full w-64 fixed left-0 top-0 border-r border-[#39485a]/20 py-6 z-40">
+<div class="px-6 mb-10 pt-12">
+<div class="text-[#a4e6ff] font-black font-headline text-lg mb-1">NVMe_Root</div>
+<div class="text-[#39485a] text-[10px] font-mono tracking-widest uppercase">Sim-ID: 882-X9</div>
+</div>
+<div class="flex-1 flex flex-col space-y-1">
+<a class="flex items-center px-6 py-3 text-[#39485a] font-medium font-space-grotesk text-sm hover:text-[#a4e6ff] hover:bg-[#1a253a]/50 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">dashboard</span> Dashboard
+        </a>
+<a class="flex items-center px-6 py-3 text-[#39485a] font-medium font-space-grotesk text-sm hover:text-[#a4e6ff] hover:bg-[#1a253a]/50 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">grid_view</span> Block Map
+        </a>
+<a class="flex items-center px-6 py-3 text-[#39485a] font-medium font-space-grotesk text-sm hover:text-[#a4e6ff] hover:bg-[#1a253a]/50 transition-all" href="#">
+<span class="material-symbols-outlined mr-3">precision_manufacturing</span> Simulation
+        </a>
+<a class="flex items-center px-6 py-3 text-[#a4e6ff] font-bold border-l-4 border-[#00d1ff] bg-gradient-to-r from-[#00d1ff]/10 to-transparent font-space-grotesk text-sm translate-x-1 duration-200" href="#">
+<span class="material-symbols-outlined mr-3">menu_book</span> Resources
+        </a>
+</div>
+<div class="px-6 pt-6 border-t border-[#39485a]/20">
+<a class="flex items-center py-2 text-[#39485a] font-medium text-xs hover:text-[#a4e6ff] transition-all" href="#">
+<span class="material-symbols-outlined text-sm mr-2">terminal</span> Logs
+        </a>
+<a class="flex items-center py-2 text-[#39485a] font-medium text-xs hover:text-[#a4e6ff] transition-all" href="#">
+<span class="material-symbols-outlined text-sm mr-2">code</span> Terminal
+        </a>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-20 pb-12 px-6 lg:px-12">
+<!-- Lesson Header -->
+<section class="mb-16 pt-8">
+<div class="max-w-4xl border-l-4 border-primary pl-8 py-4">
+<span class="text-primary font-mono text-xs tracking-[0.4em] uppercase mb-2 block">Curriculum Module 04 // Flash Physics</span>
+<h1 class="font-headline text-5xl md:text-7xl font-bold tracking-tight mb-6 text-on-surface">The Physics of <span class="text-primary-container">Persistence.</span></h1>
+<div class="flex flex-wrap gap-4 items-center">
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1 rounded-full text-xs font-mono text-primary">
+<span class="material-symbols-outlined text-xs">schedule</span>
+                    Est. Read: 12m
+                </div>
+<div class="flex items-center gap-2 bg-surface-container-high px-3 py-1 rounded-full text-xs font-mono text-primary">
+<span class="material-symbols-outlined text-xs">school</span>
+                    Level: Advanced
+                </div>
+</div>
+</div>
+</section>
+<!-- Chapter 01 -->
+<div class="relative mb-24">
+<div class="absolute -left-12 top-0 hidden lg:flex flex-col items-center gap-4">
+<span class="chapter-marker font-mono text-[10px] tracking-widest text-primary/40 uppercase font-bold">CHAPTER_01</span>
+<div class="w-0.5 h-32 bg-gradient-to-b from-primary/40 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- The Flash Cell -->
+<div class="md:col-span-8 bg-surface-container-low p-8 relative overflow-hidden group border border-outline-variant/30 rounded-xl">
+<div class="relative z-10">
+<div class="text-[10px] font-mono text-primary mb-2">LESSON_01.1</div>
+<h2 class="font-headline text-3xl font-semibold mb-6 flex items-center gap-3">
+                        The Flash Cell
+                    </h2>
+<div class="flex flex-col lg:flex-row gap-8">
+<div class="flex-1">
+<p class="text-on-surface-variant mb-4 leading-relaxed">
+                                At the heart of an SSD is the <span class="text-primary font-bold">Floating Gate Transistor</span>. It stores data by trapping electrons inside a layer of silicon isolated by oxide barriers. 
+                            </p>
+<p class="text-on-surface-variant mb-6 leading-relaxed text-sm">
+                                Think of it as a microscopic cage. Over time, the high voltage required to push electrons through the barriers causes physical degradation. This is known as <span class="italic font-medium text-tertiary">tunneling stress</span>.
+                            </p>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-4 py-3 border-b-2 border-primary-container rounded-t-lg">
+<div class="text-[10px] text-primary/50 font-mono uppercase mb-1">Charge State</div>
+<div class="font-mono text-primary text-xl">L_0 [11]</div>
+</div>
+<div class="bg-surface-container-high px-4 py-3 border-b-2 border-primary/20 rounded-t-lg">
+<div class="text-[10px] text-primary/50 font-mono uppercase mb-1">Cell Type</div>
+<div class="font-mono text-on-surface text-xl">TLC / QLC</div>
+</div>
+</div>
+</div>
+<div class="lg:w-48 h-48 bg-surface-container-highest rounded-xl flex items-center justify-center relative">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
+<div class="w-24 h-24 border border-primary/30 rotate-45 flex items-center justify-center">
+<div class="w-16 h-16 border-2 border-primary-container/60 flex items-center justify-center animate-pulse">
+<div class="w-4 h-4 bg-primary shadow-[0_0_15px_rgba(164,230,255,0.6)]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- P/E Cycles -->
+<div class="md:col-span-4 bg-surface-container-low p-8 border border-outline-variant/30 rounded-xl">
+<div class="text-[10px] font-mono text-tertiary mb-2">LESSON_01.2</div>
+<h2 class="font-headline text-3xl font-semibold mb-6 flex items-center gap-3">
+                    P/E Cycles
+                </h2>
+<p class="text-on-surface-variant mb-6 text-sm leading-relaxed">
+                    Program/Erase cycles are the currency of SSD life. Every time a cell is reset to store new data, it loses a fraction of its structural integrity.
+                </p>
+<div class="space-y-6">
+<div class="h-3 w-full bg-surface-container-highest rounded-full relative overflow-hidden">
+<div class="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-tertiary w-3/4"></div>
+</div>
+<div class="flex justify-between font-mono text-[10px] text-primary/40 tracking-widest">
+<span>BOOT_PHASE</span>
+<span>WEAR_LIMIT</span>
+</div>
+<div class="bg-tertiary/10 border border-tertiary/20 p-3 rounded">
+<p class="text-[11px] font-mono text-tertiary uppercase tracking-tighter leading-tight">Critical Alert: Oxidation Barrier Thinning Detected</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Interactive Quiz Break -->
+<section class="mb-24 bg-surface-container-high/50 border-y border-outline-variant/20 py-12 px-8 -mx-6 lg:-mx-12">
+<div class="max-w-4xl mx-auto">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">quiz</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold">Check Your Understanding</h3>
+<p class="text-on-surface-variant text-sm">Quick knowledge check on Lesson 01 concepts.</p>
+</div>
+</div>
+<div class="bg-surface-container p-6 rounded-xl border border-outline-variant/30">
+<p class="font-medium mb-4 text-on-surface">Which physical phenomenon is primarily responsible for the gradual failure of a NAND flash cell?</p>
+<div class="grid gap-3">
+<button class="flex items-center justify-between w-full p-4 bg-surface-container-low border border-outline-variant/30 hover:border-primary text-left text-sm transition-all rounded-lg group">
+<span>Magnetic interference from the SSD controller</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">arrow_forward</span>
+</button>
+<button class="flex items-center justify-between w-full p-4 bg-primary/5 border border-primary/50 text-left text-sm rounded-lg group">
+<span class="text-primary font-semibold">Physical degradation of the oxide barrier via tunneling stress</span>
+<span class="material-symbols-outlined text-sm text-primary">check_circle</span>
+</button>
+<button class="flex items-center justify-between w-full p-4 bg-surface-container-low border border-outline-variant/30 hover:border-primary text-left text-sm transition-all rounded-lg group">
+<span>Electron evaporation due to thermal throttling</span>
+<span class="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Chapter 02 -->
+<div class="relative mb-24">
+<div class="absolute -left-12 top-0 hidden lg:flex flex-col items-center gap-4">
+<span class="chapter-marker font-mono text-[10px] tracking-widest text-primary/40 uppercase font-bold">CHAPTER_02</span>
+<div class="w-0.5 h-32 bg-gradient-to-b from-primary/40 to-transparent"></div>
+</div>
+<div class="md:col-span-12 bg-surface-container-low p-10 border border-outline-variant/30 rounded-xl">
+<div class="text-[10px] font-mono text-primary mb-2">LESSON_02.1</div>
+<div class="flex flex-col lg:flex-row gap-12 items-start">
+<div class="lg:w-1/2">
+<h2 class="font-headline text-4xl font-bold mb-8 text-on-surface tracking-tight">Wear-Leveling Algorithms</h2>
+<div class="space-y-8">
+<div class="flex gap-6 group">
+<div class="w-12 h-12 shrink-0 bg-primary/10 rounded flex items-center justify-center text-primary-container pt-1 transition-colors group-hover:bg-primary/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">dynamic_form</span>
+</div>
+<div>
+<h3 class="font-headline text-xl mb-2 font-bold">Dynamic Wear-Leveling</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                                    The controller selects the block with the lowest erase count when writing new data. However, it ignores "cold data" (data that never changes), leaving those blocks unused and potentially wasting cycles.
+                                </p>
+</div>
+</div>
+<div class="flex gap-6 group">
+<div class="w-12 h-12 shrink-0 bg-primary/10 rounded flex items-center justify-center text-primary-container pt-1 transition-colors group-hover:bg-primary/20">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">schema</span>
+</div>
+<div>
+<h3 class="font-headline text-xl mb-2 font-bold">Static Wear-Leveling</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">
+                                    The "gold standard" for enterprise drives. It actively moves cold data to blocks with high wear, freeing up "fresh" blocks for incoming high-frequency writes. It ensures the entire drive ages at the exact same rate.
+                                </p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 w-full bg-surface-container-high/30 p-6 rounded-xl border border-outline-variant/20">
+<div class="flex justify-between mb-4">
+<span class="text-[10px] font-mono text-primary/50">DRIVE_TOPOLOGY_MAP</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+<span class="text-[10px] font-mono text-primary/50">SYNC_OK</span>
+</div>
+</div>
+<div class="grid grid-cols-6 gap-2">
+<div class="aspect-square bg-primary/20 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/60 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-tertiary/40 border border-tertiary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/5 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-tertiary/80 border border-tertiary/40 shadow-[0_0_10px_rgba(255,180,171,0.3)] rounded-sm"></div>
+<div class="aspect-square bg-primary/10 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/50 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/30 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/20 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/5 border border-primary/40 rounded-sm"></div>
+<div class="aspect-square bg-primary/10 border border-primary/40 rounded-sm"></div>
+</div>
+<div class="mt-6 p-3 bg-surface-container-lowest border-l-2 border-primary-container text-xs font-mono text-on-surface-variant italic">
+                        "A controller's efficiency is determined by its ability to balance write endurance across the entire physical NAND pool."
+                    </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Chapter 03 -->
+<div class="relative mb-24">
+<div class="absolute -left-12 top-0 hidden lg:flex flex-col items-center gap-4">
+<span class="chapter-marker font-mono text-[10px] tracking-widest text-primary/40 uppercase font-bold">CHAPTER_03</span>
+<div class="w-0.5 h-32 bg-gradient-to-b from-primary/40 to-transparent"></div>
+</div>
+<div class="md:col-span-12 glass-panel p-10 border border-primary/10 rounded-xl flex flex-col md:flex-row gap-10">
+<div class="md:w-1/3">
+<div class="relative group">
+<img class="w-full aspect-video md:aspect-square object-cover opacity-60 mix-blend-screen grayscale contrast-125 rounded-lg" data-alt="Microscopic view of semi-conductor pathways with glowing blue data streams and technical digital overlay in dark environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK5QOCRLmfwCKSFmmO5TWhig_SvxLASV9KpdCIN6LM_lbVEd84F1M5sIhgWWpf35hNj2sqSKAL_p2scmzBrSAg0G63RhzvA6kurb1aofxjzujdgzKXtYS6sO1aScfMXEz0UStVGTG1R7GgI0MTOp4bMC65PkYWzLuZGNL9p0SJJLcH-QPftHorYmDC8ktDU18qKtJuuUnThiNy-DsdLUIrTJe8JFlPSAp8ULt10jeIErfDBmXoKnET6hcjTDeIIT1GNxP6f0_sAPQ4"/>
+<div class="absolute inset-0 border-2 border-primary/20 rounded-lg group-hover:border-primary/50 transition-all"></div>
+</div>
+</div>
+<div class="flex-1">
+<div class="text-[10px] font-mono text-primary mb-2">LESSON_03.1</div>
+<h2 class="font-headline text-3xl font-bold mb-6 text-on-surface">Garbage Collection</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                    SSD pages cannot be overwritten directly. They must be erased. But erasures only happen at the <span class="text-primary font-bold">Block Level</span>, while writes happen at the <span class="text-primary font-bold">Page Level</span>.
+                </p>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div class="bg-surface-container-highest/40 p-5 rounded border border-outline-variant/20">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-6 h-6 rounded bg-primary/20 text-primary flex items-center justify-center text-[10px] font-bold">01</span>
+<div class="font-mono text-primary text-xs uppercase font-bold">Analysis Phase</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">The controller identifies blocks containing 'stale' or 'invalid' pages that have been marked for deletion by the OS TRIM command.</p>
+</div>
+<div class="bg-surface-container-highest/40 p-5 rounded border border-outline-variant/20">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-6 h-6 rounded bg-primary/20 text-primary flex items-center justify-center text-[10px] font-bold">02</span>
+<div class="font-mono text-primary text-xs uppercase font-bold">Consolidation</div>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">Valid data from those blocks is copied to a new, empty block to maintain data integrity before the original block is wiped.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary for Teachers Section -->
+<section class="mt-24 p-10 bg-primary/5 border border-primary/20 rounded-2xl">
+<div class="flex flex-col lg:flex-row gap-12">
+<div class="lg:w-1/3">
+<div class="bg-primary/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">cast_for_education</span>
+</div>
+<h2 class="font-headline text-3xl font-bold mb-4">Summary for Educators</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                    This module covers the physical limitations of NAND flash and the controller-level logic required to mitigate hardware degradation.
+                </p>
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary font-bold py-3 px-6 rounded-lg text-sm hover:brightness-110 transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                    LECTURE_SLIDES.PPTX
+                </button>
+</div>
+<div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-8">
+<div>
+<h4 class="font-mono text-xs text-primary mb-4 uppercase tracking-widest font-bold">Key Learning Objectives</h4>
+<ul class="space-y-4">
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="text-primary font-bold">•</span>
+                            Describe the role of the Floating Gate Transistor in data persistence.
+                        </li>
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="text-primary font-bold">•</span>
+                            Calculate Write Amplification Factor (WAF) based on host-level writes.
+                        </li>
+<li class="flex gap-3 text-sm text-on-surface-variant">
+<span class="text-primary font-bold">•</span>
+                            Differentiate between Static and Dynamic Wear-Leveling strategies.
+                        </li>
+</ul>
+</div>
+<div>
+<h4 class="font-mono text-xs text-primary mb-4 uppercase tracking-widest font-bold">Curriculum Standards</h4>
+<div class="space-y-3">
+<div class="bg-surface-container-high/40 p-3 rounded border border-outline-variant/10">
+<div class="text-[10px] font-bold text-primary-container mb-1">CS_CORE_HARDWARE_3.1</div>
+<p class="text-[11px] text-on-surface-variant">Memory systems and storage architecture fundamentals.</p>
+</div>
+<div class="bg-surface-container-high/40 p-3 rounded border border-outline-variant/10">
+<div class="text-[10px] font-bold text-primary-container mb-1">PHYS_SEMI_COND_4.2</div>
+<p class="text-[11px] text-on-surface-variant">Electron tunneling and semiconductor degradation factors.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Glossary Section -->
+<section class="mt-24">
+<div class="flex items-end justify-between border-b border-outline-variant pb-6 mb-12">
+<h2 class="font-headline text-4xl font-bold">Technical Glossary</h2>
+<span class="font-mono text-[10px] text-primary/40 uppercase tracking-widest">Index // A-Z</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Term 1 -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">speed</span>
+<dt class="font-headline text-lg text-primary-container font-bold">Write Amplification</dt>
+</div>
+<dd class="text-on-surface-variant text-sm leading-relaxed">The ratio of actual data written to the flash memory compared to the host data. High WAF shortens drive life significantly.</dd>
+</div>
+<!-- Term 2 -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">storage</span>
+<dt class="font-headline text-lg text-primary-container font-bold">Over-Provisioning</dt>
+</div>
+<dd class="text-on-surface-variant text-sm leading-relaxed">Hidden storage space on the SSD used by the controller for background tasks like garbage collection and bad block management.</dd>
+</div>
+<!-- Term 3 -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">cleaning_services</span>
+<dt class="font-headline text-lg text-primary-container font-bold">Trim Command</dt>
+</div>
+<dd class="text-on-surface-variant text-sm leading-relaxed">An OS-level instruction informing the SSD which data blocks are no longer in use and can be wiped internally.</dd>
+</div>
+<!-- Term 4 -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">rule</span>
+<dt class="font-headline text-lg text-primary-container font-bold">Bad Block Mgmt.</dt>
+</div>
+<dd class="text-on-surface-variant text-sm leading-relaxed">The process of identifying flash blocks that have failed P/E cycles and remapping their logical addresses to healthy spares.</dd>
+</div>
+<!-- Term 5 -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">verified_user</span>
+<dt class="font-headline text-lg text-primary-container font-bold">ECC</dt>
+</div>
+<dd class="text-on-surface-variant text-sm leading-relaxed">Error Correction Code. Algorithms that detect and fix bit-level errors caused by electronic interference or cell degradation.</dd>
+</div>
+<!-- Term 6 -->
+<div class="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 hover:border-primary/50 transition-all group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">history</span>
+<dt class="font-headline text-lg text-primary-container font-bold">MTBF</dt>
+</div>
+<dd class="text-on-surface-variant text-sm leading-relaxed">Mean Time Between Failures. A statistical estimate of the predicted hardware reliability under normal operating conditions.</dd>
+</div>
+</div>
+</section>
+<!-- Footer / Simulation Link -->
+<footer class="mt-32 border-t border-outline-variant pt-12 flex flex-col items-center text-center">
+<h3 class="font-headline text-3xl font-bold mb-4">Ready to test the theories?</h3>
+<p class="text-on-surface-variant mb-8 max-w-lg">Input your custom parameters and watch how different algorithms handle intensive read/write operations in real-time.</p>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold px-10 py-4 uppercase tracking-widest text-sm hover:brightness-110 active:opacity-80 transition-all rounded-lg shadow-[0_0_20px_rgba(0,209,255,0.2)]">
+            Enter Simulation Matrix
+        </button>
+<div class="mt-12 text-[10px] font-mono text-primary/30 uppercase tracking-[0.5em]">
+            Internal Documentation // Project: Silicon Pulse // Level 4 Clearance Required
+        </div>
+</footer>
+</main>
+<!-- BottomNavBar for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-[#0b1326] border-t border-[#39485a]/30 flex justify-around items-center py-4 z-50 backdrop-blur-md">
+<a class="flex flex-col items-center text-[#39485a]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] mt-1 font-headline">Dash</span>
+</a>
+<a class="flex flex-col items-center text-[#39485a]" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="text-[10px] mt-1 font-headline">Map</span>
+</a>
+<a class="flex flex-col items-center text-[#39485a]" href="#">
+<span class="material-symbols-outlined">precision_manufacturing</span>
+<span class="text-[10px] mt-1 font-headline">Sim</span>
+</a>
+<a class="flex flex-col items-center text-[#a4e6ff]" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-[10px] mt-1 font-headline">Docs</span>
+</a>
+</nav>
+</body></html>

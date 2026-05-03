@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SILICON_PULSE_v1.0 | Dashboard - Educator Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&amp;family=Inter:wght@300;400;500;600&amp;family=Poppins:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface-variant": "#cbd5e1",
+                        "outline-variant": "#475569",
+                        "secondary-container": "#334155",
+                        "on-primary-fixed-variant": "#004e60",
+                        "error": "#ffb4ab",
+                        "primary-container": "#00d1ff",
+                        "on-tertiary-container": "#a10016",
+                        "surface": "#0b1326",
+                        "secondary": "#b9c8de",
+                        "surface-container-low": "#131b2e",
+                        "tertiary-fixed-dim": "#ffb3ad",
+                        "inverse-on-surface": "#283044",
+                        "surface-container-lowest": "#060e20",
+                        "on-background": "#f8fafc",
+                        "tertiary-fixed": "#ffdad7",
+                        "surface-bright": "#31394d",
+                        "secondary-fixed-dim": "#b9c8de",
+                        "on-secondary-container": "#cbd5e1",
+                        "on-tertiary-fixed-variant": "#930013",
+                        "on-secondary": "#233143",
+                        "on-tertiary": "#68000a",
+                        "surface-container-high": "#222a3d",
+                        "on-primary": "#003543",
+                        "inverse-primary": "#00677f",
+                        "tertiary": "#ffd1cd",
+                        "on-surface": "#f8fafc",
+                        "primary-fixed-dim": "#4cd6ff",
+                        "on-tertiary-fixed": "#410004",
+                        "on-primary-container": "#00566a",
+                        "surface-container": "#171f33",
+                        "surface-variant": "#2d3449",
+                        "primary": "#a4e6ff",
+                        "tertiary-container": "#ffaaa4",
+                        "surface-tint": "#4cd6ff",
+                        "on-error": "#690005",
+                        "outline": "#94a3b8",
+                        "primary-fixed": "#b7eaff",
+                        "secondary-fixed": "#d4e4fa",
+                        "on-secondary-fixed": "#0d1c2d",
+                        "on-error-container": "#ffdad6",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#39485a",
+                        "background": "#0b1326",
+                        "surface-dim": "#0b1326",
+                        "surface-container-highest": "#2d3449",
+                        "inverse-surface": "#dae2fd",
+                        "on-primary-fixed": "#001f28"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Montserrat"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "display": ["Poppins"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            background-color: #0b1326;
+            color: #f8fafc;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-poppins { font-family: 'Poppins', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(23, 31, 51, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 1.5rem;
+        }
+        .guide-sidebar {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .guide-sidebar.hidden-sidebar {
+            transform: translateX(100%);
+        }
+        .grid-item {
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        .grid-item:hover {
+            transform: scale(1.5);
+            z-index: 10;
+            box-shadow: 0 0 15px rgba(164, 230, 255, 0.8);
+        }
+        .map-glow {
+            box-shadow: inset 0 0 40px rgba(0, 209, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden font-body">
+<aside class="fixed top-0 right-0 h-full w-80 bg-surface-container-high border-l border-primary/20 z-[60] shadow-2xl guide-sidebar hidden-sidebar" id="teacherGuide">
+<div class="p-6 h-full flex flex-col">
+<div class="flex justify-between items-center mb-8">
+<h2 class="text-xl font-bold font-montserrat text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">auto_stories</span>
+                    Educator's Guide
+                </h2>
+<button class="material-symbols-outlined hover:text-primary transition-transform hover:rotate-90" onclick="toggleGuide()">close</button>
+</div>
+<div class="flex-1 overflow-y-auto space-y-6 pr-2">
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Drive Endurance</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Think of this like a car's tire tread. Every time we write data, a tiny bit of the "tread" wears down. 98.4% means the drive is still very healthy.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">PE Cycles</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Program/Erase Cycles. One cycle is like writing on a piece of paper and then erasing it. SSDs can only do this a certain number of times (e.g., 10,000) before the paper tears.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Write Amplification (WAF)</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">This measures how much extra work the drive does behind the scenes. A WAF of 1.0 is perfect (1 unit of user data = 1 unit written). Higher numbers mean more wear.</p>
+</div>
+<div class="bg-surface-container-low p-4 rounded-xl border border-outline-variant/20">
+<h3 class="text-xs font-bold uppercase tracking-widest text-primary mb-2">Garbage Collection (GC)</h3>
+<p class="text-sm text-on-surface-variant leading-relaxed">Just like cleaning a room to find more space, the drive cleans up deleted data to make room for new files.</p>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-outline-variant">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-sm">lightbulb</span>
+<p class="text-[10px] uppercase tracking-widest text-primary/60 font-bold">Classroom Tip</p>
+</div>
+<p class="text-xs text-on-surface-variant italic">Use the "Wear Distribution" grid to visualize how the drive spreads data out to prevent any single spot from wearing out too fast.</p>
+</div>
+</div>
+</aside>
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#0b1326]/80 backdrop-blur-md">
+<div class="text-2xl font-extrabold tracking-tighter text-[#a4e6ff] font-montserrat flex items-center gap-3">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+    SILICON_PULSE_v1.0 <span class="text-[10px] ml-2 px-2 py-0.5 rounded-full bg-primary/20 text-primary border border-primary/40 font-bold">EDUCATOR EDITION</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<nav class="flex gap-8">
+<a class="text-[#a4e6ff] font-montserrat tracking-widest uppercase text-xs font-bold relative group" href="#">
+    Dashboard
+    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-[#a4e6ff] rounded-full"></span>
+</a>
+<a class="text-on-surface-variant font-montserrat tracking-widest uppercase text-xs font-bold hover:text-[#a4e6ff] transition-colors" href="#">Block Map</a>
+<a class="text-on-surface-variant font-montserrat tracking-widest uppercase text-xs font-bold hover:text-[#a4e6ff] transition-colors" href="#">Simulation</a>
+</nav>
+<div class="flex items-center gap-5 text-[#a4e6ff]">
+<button class="flex items-center gap-2 bg-primary/15 border border-primary/30 px-5 py-2 hover:bg-primary/25 transition-all rounded-full" onclick="toggleGuide()">
+<span class="material-symbols-outlined text-lg">school</span>
+<span class="text-xs font-bold font-montserrat uppercase">Teacher's Guide</span>
+</button>
+<button class="material-symbols-outlined hover:bg-[#a4e6ff]/10 p-2 rounded-full transition-colors">settings_input_component</button>
+</div>
+</div>
+<div class="bg-gradient-to-r from-transparent via-primary/30 to-transparent h-[1px] w-full absolute bottom-0 left-0"></div>
+</header>
+<aside class="hidden md:flex flex-col h-full w-64 fixed left-0 top-0 border-r border-[#39485a]/20 bg-[#0b1326] py-8 z-40">
+<div class="mt-20 px-6 mb-10">
+<div class="flex items-center gap-4 bg-surface-container-high/40 p-3 rounded-2xl border border-white/5">
+<div class="w-12 h-12 bg-gradient-to-br from-primary/30 to-primary/5 flex items-center justify-center rounded-xl shadow-lg border border-primary/20">
+<span class="material-symbols-outlined text-[#a4e6ff] text-2xl">hardware</span>
+</div>
+<div>
+<h2 class="text-[#a4e6ff] font-bold font-montserrat text-xs uppercase tracking-wider">NVMe_Root</h2>
+<p class="text-on-surface-variant text-[10px] font-medium opacity-60">Unit: Drive-01</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2 px-3">
+<a class="flex items-center gap-4 px-5 py-3.5 text-[#a4e6ff] font-bold rounded-xl bg-gradient-to-r from-primary/20 to-transparent border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-montserrat text-sm tracking-tight">Main Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-5 py-3.5 text-on-surface-variant font-semibold rounded-xl hover:text-[#a4e6ff] hover:bg-[#1a253a]/50 transition-all" href="#">
+<span class="material-symbols-outlined">view_in_ar</span>
+<span class="font-montserrat text-sm tracking-tight">Visual Block Map</span>
+</a>
+<a class="flex items-center gap-4 px-5 py-3.5 text-on-surface-variant font-semibold rounded-xl hover:text-[#a4e6ff] hover:bg-[#1a253a]/50 transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-montserrat text-sm tracking-tight">Wear Simulation</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-[#39485a]/10 pt-6 px-3">
+<a class="flex items-center gap-4 px-5 py-3.5 text-on-surface-variant font-semibold rounded-xl hover:text-[#a4e6ff] transition-all" href="#">
+<span class="material-symbols-outlined">developer_board</span>
+<span class="font-montserrat text-sm tracking-tight">Raw Logs</span>
+</a>
+</div>
+</aside>
+<main class="md:pl-64 pt-28 pb-12 px-8">
+<div class="max-w-7xl mx-auto space-y-10">
+<section class="bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 p-8 rounded-3xl relative overflow-hidden">
+<div class="absolute top-[-20px] right-[-20px] opacity-10">
+<span class="material-symbols-outlined text-[160px] text-primary">local_library</span>
+</div>
+<h2 class="text-xs font-black font-montserrat text-primary uppercase tracking-[0.3em] mb-6 flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse"></span>
+    Key Learning Objectives
+</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+<div class="flex gap-4">
+<span class="text-primary font-black text-2xl font-montserrat opacity-40">01</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Understand how <span class="text-primary font-bold">NAND flash memory</span> degrades over time through write cycles.</p>
+</div>
+<div class="flex gap-4">
+<span class="text-primary font-black text-2xl font-montserrat opacity-40">02</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Analyze <span class="text-primary font-bold">Wear Leveling</span> techniques that extend hardware lifespan.</p>
+</div>
+<div class="flex gap-4">
+<span class="text-primary font-black text-2xl font-montserrat opacity-40">03</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">Monitor <span class="text-primary font-bold">Efficiency Metrics</span> like WAF to assess controller performance.</p>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-8 bg-surface-container-low p-10 relative overflow-hidden flex flex-col justify-between min-h-[380px] border border-outline-variant/10 rounded-3xl shadow-2xl">
+<div class="relative z-10">
+<div class="flex items-center gap-4 mb-4">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-xl">favorite</span>
+</div>
+<h3 class="text-on-surface-variant font-montserrat text-xs tracking-widest uppercase font-bold">Drive Health Status: <span class="text-primary">Healthy</span></h3>
+</div>
+<h1 class="text-[7rem] font-black font-poppins leading-none text-primary drop-shadow-[0_0_20px_rgba(164,230,255,0.4)]">98.4<span class="text-4xl font-light opacity-50 ml-2">%</span></h1>
+<p class="text-on-surface-variant max-w-md mt-6 font-body text-sm leading-relaxed">
+<span class="text-on-surface font-extrabold border-b border-primary/40">Remaining Drive Life.</span> Estimated time before the memory hardware begins to fail due to physical wear.
+</p>
+</div>
+<div class="relative z-10 w-full mt-10">
+<div class="flex justify-between items-center text-[10px] font-bold font-montserrat mb-3 text-on-surface-variant tracking-wider uppercase">
+<div class="flex items-center gap-2 group relative cursor-help bg-white/5 px-2 py-1 rounded">
+<span>WEAR_LEVEL_INDEX</span>
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+<div class="invisible group-hover:visible absolute bottom-full left-0 mb-3 w-56 p-3 bg-surface-container-highest text-[11px] leading-relaxed border border-primary/30 z-20 rounded-xl shadow-2xl normal-case font-medium">A value showing how "worn out" the memory blocks are. 0% is new, 100% is end-of-life.</div>
+</div>
+<div class="flex items-center gap-2 group relative cursor-help bg-white/5 px-2 py-1 rounded">
+<span>PE_CYCLES: 142/10,000</span>
+<span class="material-symbols-outlined text-[16px] text-primary">info</span>
+<div class="invisible group-hover:visible absolute bottom-full right-0 mb-3 w-56 p-3 bg-surface-container-highest text-[11px] leading-relaxed border border-primary/30 z-20 rounded-xl shadow-2xl normal-case font-medium">Program/Erase cycles used vs. the total rated endurance of the NAND chip.</div>
+</div>
+</div>
+<div class="h-4 w-full bg-surface-container-highest rounded-full p-1 overflow-hidden">
+<div class="h-full w-[1.6%] bg-gradient-to-r from-primary to-primary-container rounded-full shadow-[0_0_15px_#a4e6ff]"></div>
+</div>
+</div>
+<div class="absolute right-[-5%] top-[-10%] opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[300px]">vital_signs</span>
+</div>
+</div>
+<div class="lg:col-span-4 grid grid-rows-2 gap-8">
+<div class="bg-surface-container-low border border-outline-variant/10 p-8 rounded-3xl flex flex-col justify-center relative overflow-hidden group">
+<div class="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-5xl">database</span>
+</div>
+<span class="text-on-surface-variant font-montserrat text-[10px] tracking-widest uppercase font-bold mb-2">Total Data Written (TBW)</span>
+<div class="text-5xl font-black font-poppins text-on-surface">1,248.8</div>
+<div class="text-primary font-bold text-xs tracking-tighter mt-1 font-montserrat">TERABYTES WRITTEN</div>
+</div>
+<div class="bg-surface-container-low border border-outline-variant/10 p-8 rounded-3xl flex flex-col justify-center relative overflow-hidden group">
+<div class="flex items-center justify-between mb-2">
+<span class="text-on-surface-variant font-montserrat text-[10px] tracking-widest uppercase font-bold">Controller Load</span>
+<div class="group relative">
+<span class="material-symbols-outlined text-[18px] cursor-help text-primary/60">help</span>
+<div class="invisible group-hover:visible absolute bottom-full right-0 mb-3 w-48 p-3 bg-surface-container-highest text-[11px] leading-relaxed border border-primary/30 z-20 rounded-xl shadow-2xl font-medium">How hard the drive's "brain" is working to manage data.</div>
+</div>
+</div>
+<div class="text-5xl font-black font-poppins text-on-surface">14<span class="text-xl font-light opacity-60 ml-1">%</span></div>
+<div class="flex gap-1.5 mt-4">
+<div class="h-1.5 flex-1 bg-primary rounded-full"></div>
+<div class="h-1.5 flex-1 bg-primary rounded-full"></div>
+<div class="h-1.5 flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="h-1.5 flex-1 bg-surface-container-highest rounded-full"></div>
+<div class="h-1.5 flex-1 bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<div class="lg:col-span-7 space-y-6">
+<div class="flex items-end justify-between">
+<div>
+<h2 class="text-3xl font-montserrat font-black lowercase flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">map</span>
+    physical_wear_heatmap
+</h2>
+<p class="text-on-surface-variant text-sm mt-2 font-medium opacity-80">Discovery view: Explore wear patterns across 4,096 storage zones.</p>
+</div>
+<div class="flex gap-6">
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-primary-container shadow-[0_0_8px_#00d1ff]"></span>
+<span class="text-[11px] font-bold uppercase text-on-surface-variant font-montserrat">Cold (New)</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="w-3 h-3 rounded-full bg-error shadow-[0_0_8px_#ffb4ab]"></span>
+<span class="text-[11px] font-bold uppercase text-on-surface-variant font-montserrat">Hot (Worn)</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 aspect-video grid grid-cols-20 grid-rows-10 gap-1.5 border border-primary/20 rounded-3xl shadow-inner map-glow overflow-hidden">
+<script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const grid = document.querySelector('.grid-cols-20');
+                                for(let i=0; i<200; i++) {
+                                    const opacity = Math.random() * 0.5;
+                                    const div = document.createElement('div');
+                                    div.className = 'grid-item rounded-sm cursor-help transition-all';
+                                    div.style.backgroundColor = `rgba(164, 230, 255, ${opacity})`;
+                                    if(Math.random() > 0.92) {
+                                        div.style.backgroundColor = `rgba(255, 180, 171, ${Math.random() * 0.7 + 0.3})`;
+                                        div.classList.add('shadow-[0_0_10px_rgba(255,180,171,0.4)]');
+                                    }
+                                    grid.appendChild(div);
+                                }
+                            });
+                        </script>
+</div>
+</div>
+<div class="lg:col-span-5 glass-panel p-8 border border-white/5 flex flex-col shadow-2xl relative overflow-hidden">
+<div class="absolute -top-4 -right-4 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]">monitor_heart</span>
+</div>
+<div class="flex justify-between items-center mb-8 relative z-10">
+<div class="flex items-center gap-3">
+<h2 class="text-xl font-montserrat font-extrabold tracking-tight">Internal Operations</h2>
+<div class="group relative">
+<span class="material-symbols-outlined text-[20px] cursor-help text-primary/60">help</span>
+<div class="invisible group-hover:visible absolute bottom-full left-0 mb-3 w-64 p-4 bg-surface-container-highest text-[12px] leading-relaxed border border-primary/30 z-20 shadow-2xl rounded-2xl">The drive is constantly moving data around to prevent wear in one spot. This feed shows those "hidden" tasks.</div>
+</div>
+</div>
+<span class="px-3 py-1 bg-primary/20 text-primary text-[10px] font-bold rounded-full border border-primary/30 font-montserrat">LIVE_TELEMETRY</span>
+</div>
+<div class="flex-1 space-y-6 overflow-y-auto max-h-[420px] pr-3 custom-scrollbar relative z-10">
+<div class="flex gap-4 items-start border-l-4 border-primary/40 pl-5 py-2 hover:bg-primary/5 transition-all rounded-r-xl">
+<span class="font-bold text-[10px] text-primary/60 mt-1.5 font-montserrat uppercase">14:02:11</span>
+<div>
+<div class="text-xs font-montserrat text-primary font-black tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">move_down</span>
+    BLOCK_EVACUATION
+</div>
+<p class="text-xs text-on-surface-variant font-medium mt-1 leading-relaxed">Moving data from a "hot" block to a "cold" block to balance wear.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start border-l-4 border-tertiary/40 pl-5 py-2 hover:bg-tertiary/5 transition-all rounded-r-xl">
+<span class="font-bold text-[10px] text-primary/60 mt-1.5 font-montserrat uppercase">14:01:58</span>
+<div>
+<div class="text-xs font-montserrat text-tertiary font-black tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">warning</span>
+    WEAR_WARNING
+</div>
+<p class="text-xs text-on-surface-variant font-medium mt-1 leading-relaxed">Block 0x992 has hit 90% capacity. Now reserved for read-only data.</p>
+</div>
+</div>
+<div class="flex gap-4 items-start border-l-4 border-white/20 pl-5 py-2 hover:bg-white/5 transition-all rounded-r-xl">
+<span class="font-bold text-[10px] text-primary/60 mt-1.5 font-montserrat uppercase">13:59:42</span>
+<div>
+<div class="text-xs font-montserrat text-on-surface font-black tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">delete_sweep</span>
+    GARBAGE_COLLECTION
+</div>
+<p class="text-xs text-on-surface-variant font-medium mt-1 leading-relaxed">Reclaiming space from deleted files. Drive speed may slow down slightly.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-4 rounded-2xl bg-primary text-on-primary font-montserrat font-black text-xs tracking-[0.2em] uppercase hover:scale-[1.02] active:scale-95 transition-all shadow-lg flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-lg">terminal</span>
+                        Full Command Interface
+                    </button>
+</div>
+</section>
+<section class="grid grid-cols-1 md:grid-cols-3 gap-10 py-16 border-t border-outline-variant/10">
+<div class="space-y-5 bg-surface-container-low/30 p-6 rounded-3xl border border-white/5">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-lg">memory</span>
+<span class="text-[11px] font-black font-montserrat text-primary/80 uppercase tracking-widest">Hardware specifications</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-3">
+<span class="text-sm text-on-surface-variant font-medium">NAND Memory Type</span>
+<span class="text-sm font-bold text-on-surface font-poppins">3D TLC (176-Layer)</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-3">
+<span class="text-sm text-on-surface-variant font-medium">Total Storage Capacity</span>
+<span class="text-sm font-bold text-on-surface font-poppins">2.0 TB</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-on-surface-variant font-medium">Bus Interface</span>
+<span class="text-sm font-bold text-on-surface font-poppins">PCIe Gen 4.0</span>
+</div>
+</div>
+<div class="space-y-5 bg-surface-container-low/30 p-6 rounded-3xl border border-white/5">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-lg">insights</span>
+<span class="text-[11px] font-black font-montserrat text-primary/80 uppercase tracking-widest">Efficiency metrics</span>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-3 group relative">
+<span class="text-sm text-on-surface-variant font-medium border-b border-dashed border-primary/40 cursor-help">Write Amplification (WAF)</span>
+<span class="text-sm font-bold text-on-surface font-poppins">1.04</span>
+<div class="invisible group-hover:visible absolute bottom-full left-0 mb-3 w-56 p-3 bg-surface-container-highest text-[11px] leading-relaxed border border-primary/30 z-20 rounded-xl font-medium shadow-2xl">The ratio of actual writes vs. requested writes. 1.0 is ideal.</div>
+</div>
+<div class="flex justify-between border-b border-outline-variant/10 pb-3">
+<span class="text-sm text-on-surface-variant font-medium">Garbage Collection Efficiency</span>
+<span class="text-sm font-bold text-primary font-poppins">94.2%</span>
+</div>
+<div class="flex justify-between">
+<span class="text-sm text-on-surface-variant font-medium">Trim Success Rate</span>
+<span class="text-sm font-bold text-on-surface font-poppins">99.9%</span>
+</div>
+</div>
+<div class="bg-gradient-to-br from-surface-container-high to-surface-container-low p-8 flex gap-5 items-center border border-primary/20 rounded-3xl relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl">verified_user</span>
+</div>
+<div class="w-16 h-16 rounded-2xl bg-primary/10 border-2 border-primary/40 flex items-center justify-center shadow-lg relative z-10">
+<span class="material-symbols-outlined text-primary text-3xl">security</span>
+</div>
+<div class="relative z-10">
+<div class="text-sm font-black font-montserrat uppercase text-on-surface tracking-wider">Data Protection Active</div>
+<p class="text-[11px] text-on-surface-variant font-medium mt-1.5 opacity-80 leading-relaxed">Hardware Encryption: AES-256-XTS Enabled</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<button class="fixed bottom-10 right-10 w-16 h-16 bg-primary rounded-2xl shadow-[0_15px_30px_rgba(164,230,255,0.4)] flex items-center justify-center text-on-primary hover:scale-110 active:scale-90 transition-all z-50 group" onclick="toggleGuide()">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform" style="font-variation-settings: 'FILL' 1;">help</span>
+</button>
+<script>
+    function toggleGuide() {
+        const sidebar = document.getElementById('teacherGuide');
+        sidebar.classList.toggle('hidden-sidebar');
+    }
+</script>
+
+</body></html>
